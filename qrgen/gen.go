@@ -15,10 +15,10 @@ func CreateImage(b []byte) (image.Image, error) {
 }
 
 // GenQRCode generates QR code for the given URL
-func GenQRCode(url string) (barcode.Barcode, error) {
+func GenQRCode(url string, width, height int) (barcode.Barcode, error) {
 	qrCode, err := qr.Encode(url, qr.M, qr.Auto)
 	if err != nil {
 		return nil, err
 	}
-	return barcode.Scale(qrCode, 200, 200)
+	return barcode.Scale(qrCode, width, height)
 }
