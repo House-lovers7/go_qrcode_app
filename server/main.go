@@ -55,6 +55,7 @@ func GenQRCode(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "image/png")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	png.Encode(w, img)
 
 }
