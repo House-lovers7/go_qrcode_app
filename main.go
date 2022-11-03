@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"go_qrcode_app/qrgen"
 	"image/png"
 	"os"
-	"go_qrcode_app/qrgen"
 )
 
 var favicon = []byte{
@@ -19,14 +19,15 @@ var favicon = []byte{
 }
 
 func main() {
-	file, err := os.Create("./favicon.png")
+	file, err := os.Create("./qr.png")
+	// file, err := os.Create("./favicon.png")
 	if err != nil {
 		fmt.Printf("file generation failed: %v\n", err)
 		return
 	}
 	defer file.Close()
-
-	img, err := qrgen.CreateImage(favicon)
+	img, err := qrgen.GenQRCode("https://www.google.com/")
+	// img, err := qrgen.CreateImage(favicon)
 	if err != nil {
 		fmt.Printf("image generation failed: %v\n", err)
 		return
